@@ -10,7 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class WatchDetailComponent implements OnInit {
   
-  watchDetail!: WatchInterface | void;
+  watchDetail!: WatchInterface;
   watchId!: number
   constructor (
     private watchService: WatchServiceService,
