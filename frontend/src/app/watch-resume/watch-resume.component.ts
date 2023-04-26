@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { WatchServiceService } from '../services/watch-service.service';
 import { WatchInterface } from '../interfaces/watch-interface';
 import { ActivatedRoute } from '@angular/router';
@@ -10,18 +10,14 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class WatchResumeComponent implements OnInit {
 
-  watchDetail!: WatchInterface | void;
-  watchId!: number
+  watchDetail!: WatchInterface;
+  @Input() watchId!: number
   constructor (
     private watchService: WatchServiceService,
-    private activeRoute: ActivatedRoute 
   ) { }
 
   ngOnInit(): void {
-    this.activeRoute.params.subscribe(params => {
-      console.log(params, 'cool');
-      this.watchId = params['id'];
-    })
+    
     this.watchDetail = this.watchService.getWatchDetail(this.watchId);
     console.log(this.watchDetail);
   }

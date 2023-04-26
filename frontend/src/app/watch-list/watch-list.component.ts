@@ -10,6 +10,7 @@ import { WatchInterface } from '../interfaces/watch-interface';
 export class WatchListComponent implements OnInit {
 
   watchList!: WatchInterface[];
+  watchIdList!: number[];
   constructor (
     private watchService: WatchServiceService,
   ) { }
@@ -17,6 +18,9 @@ export class WatchListComponent implements OnInit {
   ngOnInit(): void {
     this.watchList = this.watchService.getWatchList();
     console.log(this.watchList);
+    this.watchIdList = this.watchList.map((watch: WatchInterface) => {
+      return watch.id
+    })
   }
 
 }

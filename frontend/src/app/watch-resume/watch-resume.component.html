@@ -1,1 +1,20 @@
-<p>watch-resume works!</p>
+<div class="card" style="width: 18rem;">
+    <img src="../../assets/images/watches/{{watchDetail.image}}" class="card-img-top" style="max-width: 6rem; margin: 2rem 33%;" alt="image of watch {{watchDetail.name}}">
+    <div class="card-body"
+    [ngClass]="watchDetail.quantityAvailable != 0
+        ? 'watch_available'
+        : 'watch_not_available' "
+    >
+      <p class="card-text"
+      [ngClass]="watchDetail.quantityAvailable != 0
+        ? 'card-text'
+        : 'secondary_card_text' "
+      >
+        {{watchDetail.name}}
+      </p>
+      <p 
+      *ngIf="watchDetail.quantityAvailable == 0"
+      class="bold_text secondary_card_text"
+      >Not Available</p>
+    </div>
+  </div>

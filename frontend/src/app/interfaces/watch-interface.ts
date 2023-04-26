@@ -3,6 +3,7 @@ export interface WatchInterface {
     name: string;
     price: string;
     size?: string;
+    description: string;
     quantityAvailable?: number;
     image: string;
     type?: string;

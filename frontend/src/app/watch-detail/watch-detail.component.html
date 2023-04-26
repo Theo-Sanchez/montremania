@@ -1,1 +1,24 @@
-<p>watch-detail works!</p>
+<div class="card" style="width: 18rem;">
+    <img src="../../assets/images/watches/{{watchDetail.image}}" class="card-img-top" style="max-width: 6rem; margin: 2rem 33%;" alt="image of watch {{watchDetail.name}}">
+    <div class="card-body"
+    [ngClass]="watchDetail.quantityAvailable != 0
+        ? 'watch_available'
+        : 'watch_not_available' "
+    >
+      <p class="card-text">
+        {{watchDetail.name}}
+      </p>
+      <p class="card-text">
+        {{watchDetail.size}}
+      </p>
+      <p class="card-text">
+        {{watchDetail.price}}
+      </p>
+      <p class="card-text">
+        {{watchDetail.description}}
+      </p>
+      <p class="card-text">
+        
+      </p>
+    </div>
+  </div>

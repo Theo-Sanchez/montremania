@@ -1,1 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
+/* .max_size_carroussel {
+    margin-left: 20%;
+    max-width: 800px;
+    max-height: 200px;
+} */
+
+.watch_available {
+    background-color: #00CED1 ;
+}
+
+.watch_not_available {
+    background-color: #333333
+}
+
+.secondary_card_text {
+    color: #fff;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.bold_text{
+font-weight: 700;
+}

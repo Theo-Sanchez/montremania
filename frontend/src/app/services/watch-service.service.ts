@@ -19,8 +19,9 @@ export class WatchServiceService {
           price: `${number*30}€`,
           size: `${Math.floor(Math.random() * number*2)} inches`,
           quantityAvailable: Math.floor(Math.random() * number),
-          image: `watch_${number}.jpeg`,
+          image: `watch_${number}.jpg`,
           type: `${number%2 == 0 ? "connected" : "not connected"}`,
+          description: `description of the watch n0 ${Math.floor(Math.random() * number*2)}`
         })
       })
     })()
@@ -29,7 +30,7 @@ export class WatchServiceService {
 
   
 
-  getWatchDetail = (id: number): WatchInterface | void => {
+  getWatchDetail = (id: number): WatchInterface => {
 
     let response;
     response = this.getWatchList().filter(
