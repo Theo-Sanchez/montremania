@@ -5,15 +5,18 @@ export class UsersEntity {
     @PrimaryGeneratedColumn()
     id: number;
 
+    @Column({length: 250})
+    username: string;
+
     @Column({length:250})
     firstname:string;
 
     @Column({length:250})
     lastname:string;
 
-    @Column({length:250, unique:true})
-    email:string;
-
+    @Column({length:256})
+    address: string;
+    
     @Column('text')
     password:string;
     

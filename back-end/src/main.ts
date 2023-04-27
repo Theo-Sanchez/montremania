@@ -5,9 +5,7 @@ import * as cors from 'cors';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
-  
-  app.use(cors()); // Ajoute le middleware CORS à l'application
-
+  app.use(cors());
   await app.listen(3000);
 }
 bootstrap();

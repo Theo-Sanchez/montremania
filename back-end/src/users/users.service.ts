@@ -19,7 +19,7 @@ export class UsersService {
         }
         async findOne(username:string): Promise<UsersEntity | undefined> {
             let users= await this.usersRepository.find(
-                {where : [{ "email":username }]})
+                {where : [{ "username":username }]})
             if (users.length==1) {
                 return users[0]
             } else {
@@ -37,6 +37,7 @@ export class UsersService {
         }
         this.usersRepository.save(user)
     }
+
 
     async updateUser(user:UsersEntity){
         if (user.password) {

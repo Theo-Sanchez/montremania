@@ -20,6 +20,7 @@ export class UsersController {
 
     @Post()
     create(@Body() user: UsersEntity) {
+        console.log(user);
         return this.service.createUser(user);
     }
 
