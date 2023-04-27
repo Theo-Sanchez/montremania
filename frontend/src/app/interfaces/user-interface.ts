@@ -5,5 +5,9 @@ export interface UserInterface {
     firstname: string;
     lastname: string;
     address?: string;
-    description?: string;
+}
+
+export interface LoginInterface {
+    username: string;
+    password: string;
 }

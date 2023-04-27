@@ -1,1 +1,12 @@
-<p>subscribe-form works!</p>
+<div class="container">
+    <div class="mx-auto col_6">
+        <form #createPlayer="ngForm" (ngSubmit)="submit(createPlayer.value)">
+            <div class="mb-3" *ngFor="let elem of formElements">
+                <label class="form-label">{{elem}}</label>
+                <span *ngIf="elem!='address'" class="red_star">*</span>
+                <input type="{{elem=='password'? 'password' : 'text'}}" class="form-control" id="{{elem}}Input" placeholder={{elem}} name={{elem}} ngModel>
+            </div>
+            <button type="submit" class="mt-3 btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
