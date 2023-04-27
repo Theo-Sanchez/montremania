@@ -1,6 +1,6 @@
-<div class="card" style="width: 18rem;">
-    <img src="../../assets/images/watches/{{watchDetail.image}}" class="card-img-top" style="max-width: 6rem; margin: 2rem 33%;" alt="image of watch {{watchDetail.name}}">
-    <div class="card-body"
+<div class="card" style="width: 18rem; height: 15rem; margin-bottom: 5rem; margin-top: 2rem;">
+    <img src="../../assets/images/watches/{{watchDetail.image}}" class="card-img-top" style="width: 6rem; height: 6rem ; margin: 2rem 33%;" alt="image of watch {{watchDetail.name}}">
+    <div class="card-body" style="max-height: 100px"
     [ngClass]="watchDetail.quantityAvailable != 0
         ? 'watch_available'
         : 'watch_not_available' "

@@ -1,6 +1,6 @@
 <div class="container">
     <div class="mx-auto col_6">
-        <form #createPlayer="ngForm" (ngSubmit)="submit(createPlayer.value)">
+        <form #createPlayer="ngForm" (ngSubmit)="submit(createPlayer.value, createPlayer)">
             <div class="mb-3" *ngFor="let elem of formElements">
                 <label class="form-label">{{elem}}</label>
                 <span *ngIf="elem!='address'" class="red_star">*</span>

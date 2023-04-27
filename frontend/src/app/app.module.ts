@@ -35,11 +35,11 @@ import { FormsModule } from "@angular/forms";
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     NgbModule,
     WelcomePageComponent,
     NgbdNavCustomStyle,
-    HttpClientModule,
     FormsModule
   ],
   exports: [LoginFormComponent],

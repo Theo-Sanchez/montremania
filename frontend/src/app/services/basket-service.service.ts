@@ -14,7 +14,7 @@ export class BasketServiceService {
     const basketsStored = localStorage.getItem('userBasket');
     if (basketsStored) {
       const basketsObject: BasketsInStore = JSON.parse(basketsStored)
-      return basketsObject
+      return basketsObject;
     }
     return null
   }

@@ -1,9 +1,9 @@
-<div *ngIf="watchDetail" class="card bt mb-3" style="max-width: 100%;">
+<div *ngIf="watchDetail" class="card bt mb-3" style="max-width: 80%; margin: 5em 10em;">
   <div class="row g-0">
     <div class="col-md-4" >
       <img src="../../assets/images/watches/{{watchDetail.image}}" class="img-fluid rounded-start" alt="">
     </div>
-    <div class="col-md-8" [ngClass]="watchDetail.quantityAvailable != 0
+    <div class="col-md-8" style="padding-top: 2em;" [ngClass]="watchDetail.quantityAvailable != 0
     ? 'watch_available'
     : 'watch_not_available' ">
       <div class="card-body">
@@ -12,11 +12,13 @@
     <li class="card text bt list-group-item">{{watchDetail.price}}</li>
     <li class="card text bt list-group-item">{{watchDetail.description}}</li>
   <br>
-  <a (click)="basketService.changeItemQuantity(watchDetail.id, userId, true); increaseQuantity()" class="btn btn-dark">+</a>   
-  <a (click)="basketService.changeItemQuantity(watchDetail.id, userId, false); decreaseQuantity()" class="btn btn-dark">-</a>
-  <li class="card text bt list-group-item">{{quantity}}</li>
-      </div>
+  <div *ngIf="watchDetail.quantityAvailable != 0">
+    <a (click)="basketService.changeItemQuantity(watchDetail.id, userId, true); increaseQuantity()" class="btn btn-dark">+</a>   
+    <a (click)="basketService.changeItemQuantity(watchDetail.id, userId, false); decreaseQuantity()" class="btn btn-dark">-</a>
+    <li class="card text bt list-group-item">{{quantity}}</li>
     <a (click)="addItem(); resetQuantity();" class="btn btn-dark">Add to basket</a>
+  </div>
+      </div>
     </div>
   </div>
 </div>
