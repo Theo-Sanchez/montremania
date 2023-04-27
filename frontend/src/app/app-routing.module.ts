@@ -7,8 +7,6 @@ import { LoginFormComponent } from './login-form/login-form.component';
 import { SubscribeFormComponent } from './subscribe-form/subscribe-form.component';
 import { WatchNotFoundComponent } from './watch-not-found/watch-not-found.component';
 
-
-
 const routes: Routes = [
   {path: "",
    redirectTo: "home",

@@ -1,9 +1,9 @@
-
-
 <div class="container px-4 text-center">
-  <div class="row gx-5" *ngFor="let watchid of watchIdList">
+  <div class="row gx-5" *ngFor="let watchId of watchIdList">
     <div class="col">
-      <app-watch-resume [watchId]="watchid"></app-watch-resume>
+      <a href="/watch/{{watchId}}">
+        <app-watch-resume [watchId]="watchId"></app-watch-resume>
+      </a>
     </div>
   </div>
 </div>

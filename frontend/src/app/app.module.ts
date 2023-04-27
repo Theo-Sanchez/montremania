@@ -13,7 +13,8 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { WatchNotFoundComponent } from './watch-not-found/watch-not-found.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
+import { NgbdNavCustomStyle } from './nav-custom-style/nav-custom-style.component';
+import { BasketComponent } from './basket/basket.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,14 +25,17 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     SiteLogoComponent,
     NavBarComponent,
     LoginFormComponent,
-    WatchNotFoundComponent
+    WatchNotFoundComponent,
+    BasketComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    WelcomePageComponent
+    WelcomePageComponent,
+    NgbdNavCustomStyle,
   ],
+  exports: [LoginFormComponent],
   providers: [],
   bootstrap: [AppComponent]
 })
