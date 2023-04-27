@@ -16,7 +16,7 @@ export class WatchServiceService {
         return ({
           id: parseInt(`${number}`),
           name: `montre${number}`,
-          price: `${number*30}€`,
+          price: number*30,
           size: `${Math.floor(Math.random() * number*2)} inches`,
           quantityAvailable: Math.floor(Math.random() * number),
           image: `watch_${number}.jpg`,
