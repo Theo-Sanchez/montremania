@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { UserServiceService } from '../services/user-service.service';
+import { UserInterface } from '../interfaces/user-interface';
 
 @Component({
   selector: 'app-subscribe-form',
@@ -7,9 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SubscribeFormComponent implements OnInit {
 
-  constructor() { }
+  formElements!: string[]
+  constructor(private userService: UserServiceService) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void { 
+    this.formElements =  [
+    "username",
+    "password",
+    "firstname",
+    "lastname",
+    "address"]
   }
-
+  
+  submit(data: UserInterface)
+    {
+      console.log(data)
+      this.userService.createUser(data);
+      // console.log(data);
+    }
 }

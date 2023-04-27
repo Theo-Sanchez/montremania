@@ -15,6 +15,11 @@ import { WatchNotFoundComponent } from './watch-not-found/watch-not-found.compon
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgbdNavCustomStyle } from './nav-custom-style/nav-custom-style.component';
 import { BasketComponent } from './basket/basket.component';
+
+
+import { HttpClientModule } from "@angular/common/http";
+import { FormsModule } from "@angular/forms";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,6 +39,8 @@ import { BasketComponent } from './basket/basket.component';
     NgbModule,
     WelcomePageComponent,
     NgbdNavCustomStyle,
+    HttpClientModule,
+    FormsModule
   ],
   exports: [LoginFormComponent],
   providers: [],
