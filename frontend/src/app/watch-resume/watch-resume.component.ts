@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { WatchServiceService } from '../services/watch-service.service';
 import { WatchInterface } from '../interfaces/watch-interface';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-watch-resume',

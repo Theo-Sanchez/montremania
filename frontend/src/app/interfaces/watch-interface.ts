@@ -1,7 +1,7 @@
 export interface WatchInterface {
     id: number;
     name: string;
-    price: string;
+    price: number;
     size?: string;
     description: string;
     quantityAvailable?: number;

@@ -1,0 +1,18 @@
+<ul ngbNav #nav="ngbNav" [activeId]="2" class="nav-tabs justify-content-center">
+	<li [ngbNavItem]="1">
+		<a ngbNavLink routerLink="/">Home</a>
+	</li>
+	<li [ngbNavItem]="2">
+		<a ngbNavLink routerLink="/watch">Watches</a>
+	</li>
+	<li ngbDropdown class="nav-item" role="presentation">
+		<a type="button" class="nav-link" ngbDropdownToggle>Login</a>
+		<div ngbDropdownMenu>
+			<a ngbDropdownItem routerLink="/login">Already a user</a>
+            <div class="dropdown-divider"></div>
+			<a ngbDropdownItem routerLink="/subscribe">Subscribe</a>
+		</div>
+	</li>
+	
+</ul>
+<router-outlet></router-outlet>
