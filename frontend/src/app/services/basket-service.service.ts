@@ -1,15 +1,20 @@
 import { Injectable } from '@angular/core';
 import { BasketInterface, BasketsInStore, ItemInterface, ItemInterfaceKey } from '../interfaces/item-interface';
+import { WatchInterface } from '../interfaces/watch-interface';
+import { UserServiceService } from './user-service.service';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class BasketServiceService {
-  userId: number = 1; // to review
+  userId: number; // to review
 
-  constructor() { }
+  constructor(public userService: UserServiceService) { 
+    this.userId = this.userService.getUserId();
+  }
 
+  
   getBaskets = () => {
     const basketsStored = localStorage.getItem('userBasket');
     if (basketsStored) {
@@ -37,9 +42,9 @@ export class BasketServiceService {
     const itemToChange = this.getItemFromBasket(itemId, userId);
     if (!baskets || !itemToChange) return;
     const indexOfItem = baskets[userId].items.findIndex((item) => JSON.stringify(item) == JSON.stringify(itemToChange));
-    console.log("indexOfItem", indexOfItem);
     let newItem = itemToChange;
     for (const [key, value] of Object.entries(newItemProperties)) {
+      console.log(key, value)
       newItem[key] = value;/* tslint:disable */
     }
     const itemToReturn: BasketsInStore = {
@@ -48,7 +53,7 @@ export class BasketServiceService {
         {
           ...baskets[userId],
         items : [
-          ...baskets[userId].items.splice(indexOfItem, 1),
+          ...baskets[userId].items.filter((a, key)=> key != indexOfItem),
           newItem
         ]
       }
@@ -64,28 +69,29 @@ export class BasketServiceService {
       const userBasket = baskets[userId]
       const response = userBasket.items.filter((item) => {
         (itemId == item.id)
-      })[0]
-      return response.quantity
+      })
+      return response[0]? response[0].quantity : 0
     }
   }
 
-  changeItemQuantity = (itemId: number, userId:number, increase: boolean) => {
+  changeItemQuantity = (itemId: number, userId:number, quantity: number) => {
     const baskets = this.getBaskets();
-    if (!baskets) {console.log("oups"); return}
-    const itemQuantity: any = baskets[userId].items[itemId].quantity
+    if (!baskets || !quantity) {console.log("oups"); return}
+    console.log(baskets[userId].items.filter((itemInStore) => itemInStore.id == itemId)[0], "test")
+    const itemQuantity: any = baskets[userId].items.filter((itemInStore) => itemInStore.id == itemId)[0]?.quantity || 0
+    console.log("itemQuantity", itemQuantity, "quantity", quantity)
     this.changeItem(itemId, userId, {
-      quantity: itemQuantity + increase? 1 : -1}
+      quantity: itemQuantity + quantity}
     )
-    console.log()
   }
 
-  addItemQuantity = (itemId: number, userId: number) => {
-    this.changeItemQuantity(itemId, userId, true)
-  }
+  // addItemQuantity = (itemId: number, userId: number) => {
+  //   this.changeItemQuantity(itemId, userId, true)
+  // }
 
-  removeItemQuantity = (itemId: number, userId: number) => {
-    this.changeItemQuantity(itemId, userId, false)
-  }
+  // removeItemQuantity = (itemId: number, userId: number) => {
+  //   this.changeItemQuantity(itemId, userId, false)
+  // }
 
 
   // need to be call on user subscription
@@ -110,6 +116,7 @@ export class BasketServiceService {
   getUserBasket = (userId: number): BasketInterface => {
     const baskets = this.getBaskets();
     if (baskets) {
+      console.log(baskets[userId], "basket dans getUserBasket")
       return baskets[userId];
     }
     return {
@@ -119,17 +126,25 @@ export class BasketServiceService {
     }
   }
 
-  addItem = (item: ItemInterface, userId: number): void => {
+  addItem = (item: WatchInterface, userId: number, quantity: number): void => {
     const baskets = this.getBaskets();
+    const itemWithQuantity = {
+      ...item,
+      quantity: quantity
+    }
     if (baskets) {
       if (baskets[userId]) {
+        if (baskets[userId].items.some((itemInStore:ItemInterface) => itemInStore.id ===item.id)){
+          this.changeItemQuantity(item.id, userId, quantity)
+        }
+      else{
       const userBasket: BasketInterface = baskets[userId];
       const newBasket: BasketInterface = {
         items: [
           ...userBasket["items"],
-          item
+          itemWithQuantity
         ],
-        totalPrice: userBasket["totalPrice"] + item.price*item.quantity,
+        totalPrice: userBasket["totalPrice"] + itemWithQuantity.price*itemWithQuantity.quantity,
         lastModified: Date.now().toString(),
       }
       localStorage.setItem("userBasket", JSON.stringify({
@@ -138,14 +153,15 @@ export class BasketServiceService {
       }))
     }
     const newBasket: BasketInterface = {
-      items: [item],
-      totalPrice: item.price*item.quantity,
+      items: [itemWithQuantity],
+      totalPrice: itemWithQuantity.price*itemWithQuantity.quantity,
       lastModified: Date.now().toString(),
     }
     localStorage.setItem("userBasket", JSON.stringify({
       ...baskets,
       [userId]: newBasket
     }))
+  }
   }
 }
   removeItem = (item: ItemInterface, userId: number, quantity:number = 1): void => {

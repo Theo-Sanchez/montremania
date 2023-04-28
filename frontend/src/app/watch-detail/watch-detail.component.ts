@@ -37,25 +37,23 @@ export class WatchDetailComponent implements OnInit {
       this.watchId = params['id'];
     })
     this.quantity = this.basketService.getItemQuantity(this.watchId, this.userId)
+    console.log(this.quantity)
     
     this.addItem = () => {
-      const item = {
-        ...this.watchDetail,
-        quantity: this.quantity
-      }
-      this.basketService.addItem(item, this.userId)
-
+      this.basketService.addItem(this.watchDetail, this.userId, this.quantity)
     }
     this.increaseQuantity = () => {
       this.quantity += 1;
-      this.basketService.changeItemQuantity(this.watchId, this.userId, true);
+      // this.basketService.changeItemQuantity(this.watchId, this.userId, true);
       console.log(this.basketService.getItemQuantity(this.watchId, this.userId));
       console.log(this.quantity);
     }
+
     this.resetQuantity = () => { this.quantity = 0 }
+
     this.decreaseQuantity = () => {
       this.quantity -= 1;
-      this.basketService.changeItemQuantity(this.watchId, this.userId, false);
+      // this.basketService.changeItemQuantity(this.watchId, this.userId, false);
       console.log(this.basketService.getItemQuantity(this.watchId, this.userId));
       console.log(this.quantity);
 

@@ -13,10 +13,12 @@
     <li class="card text bt list-group-item">{{watchDetail.description}}</li>
   <br>
   <div *ngIf="watchDetail.quantityAvailable != 0">
-    <a (click)="basketService.changeItemQuantity(watchDetail.id, userId, true); increaseQuantity()" class="btn btn-dark">+</a>   
-    <a (click)="basketService.changeItemQuantity(watchDetail.id, userId, false); decreaseQuantity()" class="btn btn-dark">-</a>
-    <li class="card text bt list-group-item">{{quantity}}</li>
-    <a (click)="addItem(); resetQuantity();" class="btn btn-dark">Add to basket</a>
+    <a (click)=" increaseQuantity()" class="btn btn-dark">+</a>   
+    <a (click)="decreaseQuantity()" class="btn btn-dark">-</a>
+    <div *ngIf="quantity">
+      <li class="card text bt list-group-item">{{quantity}}</li>
+    </div>
+    <a (click)="basketService.addItem(watchDetail, userId, quantity); addItem(); resetQuantity();" class="btn btn-dark">Add to basket</a>
   </div>
       </div>
     </div>

@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { tap } from 'rxjs';
 import { NgForm } from '@angular/forms';
 import { BasketServiceService } from '../services/basket-service.service';
+import { UserServiceService } from '../services/user-service.service';
 
 @Component({
   selector: 'app-login-form',
@@ -17,7 +18,8 @@ export class LoginFormComponent implements OnInit {
   constructor(
     private router: Router,
     private _http: HttpClient,
-    private basketService: BasketServiceService
+    private basketService: BasketServiceService,
+    public userService: UserServiceService
   ) { }
 
   redirectHome = () => {
@@ -41,13 +43,13 @@ export class LoginFormComponent implements OnInit {
   }
   
   loginStep = (loginDetail: LoginInterface, loginForm: NgForm) => {
-    console.log("oups")
     return this._http.post("http://localhost:3000/auth/login", loginDetail)
     .pipe(
       tap(
       {
-        next: (data) => {
+        next: (data: any) => {
           console.log(data)
+          this.userService.recordUserInStore(data?.id as number)
           this.recordUserInLocalHost();
           this.basketService.initUserBasket(1)
           this.redirectHome();
