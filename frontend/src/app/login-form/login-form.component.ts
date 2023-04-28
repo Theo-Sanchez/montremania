@@ -4,6 +4,7 @@ import { LoginInterface } from '../interfaces/user-interface';
 import { HttpClient } from '@angular/common/http';
 import { tap } from 'rxjs';
 import { NgForm } from '@angular/forms';
+import { BasketServiceService } from '../services/basket-service.service';
 
 @Component({
   selector: 'app-login-form',
@@ -15,7 +16,8 @@ export class LoginFormComponent implements OnInit {
   errorLogin!: boolean;
   constructor(
     private router: Router,
-    private _http: HttpClient
+    private _http: HttpClient,
+    private basketService: BasketServiceService
   ) { }
 
   redirectHome = () => {
@@ -32,10 +34,12 @@ export class LoginFormComponent implements OnInit {
   ngOnInit(): void {
     this.errorLogin = false;
   }
+  
   login = (loginDetail: LoginInterface, loginForm: NgForm) => {
     this.loginStep(loginDetail, loginForm)
       .subscribe()
   }
+  
   loginStep = (loginDetail: LoginInterface, loginForm: NgForm) => {
     console.log("oups")
     return this._http.post("http://localhost:3000/auth/login", loginDetail)
@@ -45,6 +49,7 @@ export class LoginFormComponent implements OnInit {
         next: (data) => {
           console.log(data)
           this.recordUserInLocalHost();
+          this.basketService.initUserBasket(1)
           this.redirectHome();
           this.errorLogin = false;
         },

@@ -6,6 +6,7 @@ import { WatchDetailComponent } from './watch-detail/watch-detail.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { SubscribeFormComponent } from './subscribe-form/subscribe-form.component';
 import { WatchNotFoundComponent } from './watch-not-found/watch-not-found.component';
+import { BasketComponentComponent } from './basket-component/basket-component.component';
 
 const routes: Routes = [
   {path: "",
@@ -38,6 +39,10 @@ const routes: Routes = [
   path: "login",
   // component: LoginFormPage
   component: LoginFormComponent
+  },
+  { title: "Basket", 
+    path: "user/basket",
+    component: BasketComponentComponent
   },
 ];
 

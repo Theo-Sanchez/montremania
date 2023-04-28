@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { WatchInterface } from '../interfaces/watch-interface';
 import {Router} from "@angular/router";
+import sampleJson from "../../assets/bottleneck/watches.json";
 
 @Injectable({
   providedIn: 'root'
@@ -10,31 +11,14 @@ export class WatchServiceService {
   constructor(private router: Router) { }
 
   getWatchList = (): WatchInterface[] => {
-    const numberOfWatch = [1,2,3,4]
-    return (function() {
-      return numberOfWatch.map((number: number) => {
-        return ({
-          id: parseInt(`${number}`),
-          name: `montre${number}`,
-          price: number*30,
-          size: `${Math.floor(Math.random() * number*2)} inches`,
-          quantityAvailable: Math.floor(Math.random() * number),
-          image: `watch_${number}.jpg`,
-          type: `${number%2 == 0 ? "connected" : "not connected"}`,
-          description: `description of the watch n0 ${Math.floor(Math.random() * number*2)}`
-        })
-      })
-    })()
-    // const response = watchs()
-  }
-
+    return sampleJson;
+  };
   
-
-  getWatchDetail = (id: number): WatchInterface => {
+  getWatchDetail = (watchId: number): WatchInterface => {
 
     let response;
     response = this.getWatchList().filter(
-      (watch: WatchInterface) => watch.id == id
+      (watch: WatchInterface) => watch.id == watchId
     )[0];
     console.log(response, "dans service")
     if (response == undefined) { 

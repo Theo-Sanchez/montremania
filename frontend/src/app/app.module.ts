@@ -14,11 +14,12 @@ import { LoginFormComponent } from './login-form/login-form.component';
 import { WatchNotFoundComponent } from './watch-not-found/watch-not-found.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgbdNavCustomStyle } from './nav-custom-style/nav-custom-style.component';
-import { BasketComponent } from './basket/basket.component';
 
 
 import { HttpClientModule } from "@angular/common/http";
 import { FormsModule } from "@angular/forms";
+import { BasketComponentComponent } from './basket-component/basket-component.component';
+import { ShoppingItemComponentComponent } from './shopping-item-component/shopping-item-component.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { FormsModule } from "@angular/forms";
     NavBarComponent,
     LoginFormComponent,
     WatchNotFoundComponent,
-    BasketComponent
+    BasketComponentComponent,
+    ShoppingItemComponentComponent
   ],
   imports: [
     BrowserModule,

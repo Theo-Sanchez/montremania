@@ -1,0 +1,82 @@
+[
+  {
+    "id": 1,
+    "name": "super_watch_sa_mere",
+    "price": 300,
+    "size": "8 inches",
+    "quantityAvailable": 2,
+    "image": "watch_1.jpg",
+    "type": "connected",
+    "description": "Cette montre ira à ravir avec votre super style sa mère"
+  },
+  {
+    "id": 2,
+    "name": "super_watch_sa_mere",
+    "price": 200,
+    "size": "8 inches",
+    "quantityAvailable": 0,
+    "image": "watch_2.jpg",
+    "type": "connected",
+    "description": "Cette montre ira à ravir avec votre super style sa mère"
+  },
+  {
+    "id": 3,
+    "name": "super_watch_sa_mere",
+    "price": 400,
+    "size": "8 inches",
+    "quantityAvailable": 4,
+    "image": "watch_3.jpg",
+    "type": "not_connected",
+    "description": "Cette montre ira à ravir avec votre super style sa mère"
+  },
+  {
+    "id": 4,
+    "name": "watch_de_merde",
+    "price": 30,
+    "size": "8 inches",
+    "quantityAvailable": 3,
+    "image": "watch_4.jpg",
+    "type": "connected",
+    "description": "Cette montre ira à ravir avec votre super style sa mère"
+  },
+  {
+    "id": 5,
+    "name": "super_watch_sa_mere",
+    "price": 300,
+    "size": "8 inches",
+    "quantityAvailable": 2,
+    "image": "watch_5.jpg",
+    "type": "not_connected",
+    "description": "Cette montre ira à ravir avec votre super style sa mère"
+  },
+  {
+    "id": 6,
+    "name": "super_watch_sa_mere",
+    "price": 300,
+    "size": "8 inches",
+    "quantityAvailable": 2,
+    "image": "watch_6.jpg",
+    "type": "not_connected",
+    "description": "Cette montre ira à ravir avec votre super style sa mère"
+  },
+  {
+    "id": 7,
+    "name": "super_watch_sa_mere",
+    "price": 300,
+    "size": "8 inches",
+    "quantityAvailable": 2,
+    "image": "watch_7.jpg",
+    "type": "connected",
+    "description": "Cette montre ira à ravir avec votre super style sa mère"
+  },
+  {
+    "id": 8,
+    "name": "super_watch_sa_mere",
+    "price": 300,
+    "size": "8 inches",
+    "quantityAvailable": 2,
+    "image": "watch_8.jpg",
+    "type": "not_connected",
+    "description": "Cette montre ira à ravir avec votre super style sa mère"
+  }
+]

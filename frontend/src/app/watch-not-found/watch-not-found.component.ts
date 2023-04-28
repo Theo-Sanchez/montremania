@@ -6,13 +6,16 @@ import { Router } from '@angular/router';
   styleUrls: ['./watch-not-found.component.css']
 })
 export class WatchNotFoundComponent implements OnInit {
-
+  timeout: any
   constructor(private router: Router) { }
 
   ngOnInit() {
-    setTimeout(() => {
+    this.timeout = setTimeout(() => {
       this.router.navigate(['/watch']);
     }, 6000);
+  }
+  ngOnDestroy() {
+    clearTimeout(this.timeout);
   }
 
 }

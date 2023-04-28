@@ -1,0 +1,10 @@
+<div class="description">{{item.name}}</div>
+<div class="price">
+  {{item.price}} €
+</div>
+<button (click)="remove()"
+        class="remove">Remove</button>
+
+<a (click)="basketService.changeItemQuantity(item.id, userId, true); increase()" class="btn btn-dark">+</a>   
+<a (click)="basketService.changeItemQuantity(item.id, userId, false); decrease()" class="btn btn-dark">-</a>
+<div class="card text bt list-group-item">{{quantity}}</div>

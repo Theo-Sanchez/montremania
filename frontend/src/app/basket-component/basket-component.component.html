@@ -1,0 +1,14 @@
+<p>You have {{getLength()}} items in your basket.</p>
+<p>Total: {{total() }}€</p>
+<div class="items">
+  <app-shopping-item-component>
+    class="item"
+    *ngFor="let item of userBasket.items"
+    [item]="item"
+    (onRemove)="removeItem(item)"
+    (onIncrease)="increaseQuantity()"
+    (onDecrease)="decreaseQuantity()"
+    (onResetQuantity)="resetQuantity()"
+    >
+  </app-shopping-item-component>
+</div>

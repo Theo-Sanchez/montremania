@@ -1,0 +1,15 @@
+const numberOfWatch = [1,2,3,4]
+    return (function() {
+      return numberOfWatch.map((number: number) => {
+        return ({
+          id: parseInt(`${number}`),
+          name: `montre${number}`,
+          price: number*30,
+          size: `${Math.floor(Math.random() * number*2)} inches`,
+          quantityAvailable: Math.floor(Math.random() * number),
+          image: `watch_${number}.jpg`,
+          type: `${number%2 == 0 ? "connected" : "not connected"}`,
+          description: `description of the watch n0 ${Math.floor(Math.random() * number*2)}`
+        })
+      })
+    })()

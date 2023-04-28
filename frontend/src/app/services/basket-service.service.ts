@@ -6,7 +6,7 @@ import { BasketInterface, BasketsInStore, ItemInterface, ItemInterfaceKey } from
   providedIn: 'root'
 })
 export class BasketServiceService {
-  userId!: number;
+  userId: number = 1; // to review
 
   constructor() { }
 
@@ -21,6 +21,7 @@ export class BasketServiceService {
 
   getItemFromBasket = (itemId: number, userId: number) => {
     const basket = this.getBaskets();
+    
     if (basket){
       const itemToReturn = basket[userId].items.filter((item) => item.id == itemId);
       if (itemToReturn[0]) {
@@ -90,6 +91,7 @@ export class BasketServiceService {
   // need to be call on user subscription
   initUserBasket = (userId: number) => {
     const baskets = this.getBaskets();
+    console.log(baskets)
     const initialBasket = {
         items : [],
         totalPrice: 0,
@@ -127,7 +129,7 @@ export class BasketServiceService {
           ...userBasket["items"],
           item
         ],
-        totalPrice: userBasket["totalPrice"] + item["price"]*item['quantity'],
+        totalPrice: userBasket["totalPrice"] + item.price*item.quantity,
         lastModified: Date.now().toString(),
       }
       localStorage.setItem("userBasket", JSON.stringify({
@@ -137,7 +139,7 @@ export class BasketServiceService {
     }
     const newBasket: BasketInterface = {
       items: [item],
-      totalPrice: item["price"]*item['quantity'],
+      totalPrice: item.price*item.quantity,
       lastModified: Date.now().toString(),
     }
     localStorage.setItem("userBasket", JSON.stringify({

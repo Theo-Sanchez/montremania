@@ -15,7 +15,9 @@ export class UserServiceService {
 
 	loginUser = (userDetail: LoginInterface): Observable<Object> =>
 	{
-		return this._http.post('http://localhost:3000/auth/login', userDetail);
+		const user = this._http.post('http://localhost:3000/auth/login', userDetail);
+    user.subscribe();
+    return user
 	};
 
   createUser = (userDetail: UserInterface): Observable<Object> => {
